@@ -3,50 +3,50 @@ import click
 
 # imports - module imports
 from bench.utils.cli import (
-	MultiCommandGroup,
-	print_bench_version,
-	use_experimental_feature,
-	setup_verbosity,
+    MultiCommandGroup,
+    print_bench_version,
+    use_experimental_feature,
+    setup_verbosity,
 )
 
 
 @click.group(cls=MultiCommandGroup)
 @click.option(
-	"--version",
-	is_flag=True,
-	is_eager=True,
-	callback=print_bench_version,
-	expose_value=False,
+    "--version",
+    is_flag=True,
+    is_eager=True,
+    callback=print_bench_version,
+    expose_value=False,
 )
 @click.option(
-	"--use-feature",
-	is_eager=True,
-	callback=use_experimental_feature,
-	expose_value=False,
+    "--use-feature",
+    is_eager=True,
+    callback=use_experimental_feature,
+    expose_value=False,
 )
 @click.option(
-	"-v",
-	"--verbose",
-	is_flag=True,
-	callback=setup_verbosity,
-	expose_value=False,
+    "-v",
+    "--verbose",
+    is_flag=True,
+    callback=setup_verbosity,
+    expose_value=False,
 )
 def bench_command(bench_path="."):
-	import bench
+    import bench
 
-	bench.set_frappe_version(bench_path=bench_path)
+    bench.set_frappe_version(bench_path=bench_path)
 
 
 from bench.commands.make import (
-	drop,
-	exclude_app_for_update,
-	get_app,
-	include_app_for_update,
-	init,
-	new_app,
-	pip,
-	remove_app,
-	validate_dependencies,
+    drop,
+    exclude_app_for_update,
+    get_app,
+    include_app_for_update,
+    init,
+    new_app,
+    pip,
+    remove_app,
+    validate_dependencies,
 )
 
 bench_command.add_command(init)
@@ -61,10 +61,10 @@ bench_command.add_command(validate_dependencies)
 
 
 from bench.commands.update import (
-	retry_upgrade,
-	switch_to_branch,
-	switch_to_develop,
-	update,
+    retry_upgrade,
+    switch_to_branch,
+    switch_to_develop,
+    update,
 )
 
 bench_command.add_command(update)
@@ -74,24 +74,24 @@ bench_command.add_command(switch_to_develop)
 
 
 from bench.commands.utils import (
-	app_cache_helper,
-	backup_all_sites,
-	bench_src,
-	disable_production,
-	download_translations,
-	find_benches,
-	migrate_env,
-	renew_lets_encrypt,
-	restart,
-	set_mariadb_host,
-	set_nginx_port,
-	set_redis_cache_host,
-	set_redis_queue_host,
-	set_redis_socketio_host,
-	set_ssl_certificate,
-	set_ssl_certificate_key,
-	set_url_root,
-	start,
+    app_cache_helper,
+    backup_all_sites,
+    bench_src,
+    disable_production,
+    download_translations,
+    find_benches,
+    migrate_env,
+    renew_lets_encrypt,
+    restart,
+    set_mariadb_host,
+    set_nginx_port,
+    set_redis_cache_host,
+    set_redis_queue_host,
+    set_redis_socketio_host,
+    set_ssl_certificate,
+    set_ssl_certificate_key,
+    set_url_root,
+    start,
 )
 
 bench_command.add_command(start)
@@ -131,3 +131,7 @@ bench_command.add_command(remote_urls)
 from bench.commands.install import install
 
 bench_command.add_command(install)
+
+from bench.commands.completions import completion
+
+bench_command.add_command(completion)
