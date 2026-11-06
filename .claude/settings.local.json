@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)",
+      "Bash(gh pr:*)"
+    ]
+  },
+  "disabledMcpjsonServers": [
+    "gameplan"
+  ]
+}
